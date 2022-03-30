@@ -4,12 +4,6 @@ from .models import *
 from .models import User
 
 
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('id','email', 'is_admin')
-
-admin.site.register(User, UserAdmin)
-
-
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('category_name', 'description')
 

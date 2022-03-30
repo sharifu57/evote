@@ -2,44 +2,68 @@
 {% load static %}
 {% load voting_filters %}
 {% block content %}
-<div class="grad2">
-    <div class="uk-container">
-        <div class="uk-margin-large-left uk-margin-large-right">
-            <div class="uk-margin-left uk-margin-right">
-                <div class="uk-container">
-                    <div class="uk-container">
-                        <div class="uk-flex" uk-grid>
-                            <div class="uk-width-1-4">
+<div class="grad21">
+    <div class="uk-section">
+        <div class="uk-container">
+            <div class="uk-margin-top">
+                <div class="uk-flex" uk-grid>
+                    <div class="uk-width-1-4">
+            
+                    </div>
+                    <div class="uk-width-expand">
+                        <div class="uk-card uk-card-default uk-card-body">
+                            
+                            <img class="uk-align-center" src="{% static 'images/logo.png' %}" width="60px">
+                            <h5 class="uk-text-center uk-text-bold">Administrator Login</h5>
+                            <form method="post" action="" class="uk-form-stacked">
 
-                            </div>
-                            <div class="uk-width-expand">
-                                <div class="uk-margin-large-top">
-                                    <img class="uk-align-center" src="{% static 'images/logo.png' %}">
-                                    <div class="uk-card uk-card-default uk-card-body">
-                                        <form>
-
-                                            <div class="uk-margin">
-                                                <div class="uk-inline">
-                                                    <span class="uk-form-icon" uk-icon="icon: user"></span>
-                                                    <input class="uk-input" type="text">
-                                                </div>
-                                            </div>
-                                        
-                                            <div class="uk-margin">
-                                                <div class="uk-inline">
-                                                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                                                    <input class="uk-input" type="text">
-                                                </div>
-                                            </div>
-                                        
-                                        </form>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-stacked-text">Username: <span style="color: red;">*</span></label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="form-stacked-text" type="text" name="username" value="username" placeholder="Admin Username">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="uk-width-1-4">
 
-                            </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-stacked-text">Password: <span style="color: red;">*</span></label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="form-stacked-text" name="password" value="password" type="password" placeholder="Admin Password">
+                                    </div>
+                                </div>
+                        
+                                <button type="submit" class="uk-button uk-button-primary uk-width-1-1">
+                                    login
+                                </button>
+                            </form>
+
+
+
                         </div>
+                        <!-- <div class="uk-margin-large-top">
+                            <img class="uk-align-center" src="{% static 'images/logo.png' %}">
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <form>
+            
+                                    <div class="uk-margin">
+                                        <div class="uk-inline">
+                                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                            <input class="uk-input" type="text">
+                                        </div>
+                                    </div>
+                                
+                                    <div class="uk-margin">
+                                        <div class="uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                            <input class="uk-input" type="text">
+                                        </div>
+                                    </div>
+                                
+                                </form>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="uk-width-1-4">
+            
                     </div>
                 </div>
             </div>

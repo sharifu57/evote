@@ -7,7 +7,7 @@ from unicodedata import category
 from django.shortcuts import render, redirect
 from urllib import request
 from django.views.generic import TemplateView
-from voting.forms import CreateUserForm, NominationForm, VoteForm
+from voting.forms import CreateUserForm, LoginForm, NominationForm, VoteForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages import constants as messages
 from django_user_agents.utils import get_user_agent
@@ -16,6 +16,7 @@ from ipware import get_client_ip
 from django.db.models import Count
 from django.contrib import messages
 from django.views.generic import TemplateView, View
+from django.contrib.auth import authenticate, login
 
 from voting.models import *
 
@@ -79,10 +80,31 @@ def submit_vote(request):
 
 
 # admin part
-class AdminAuth(TemplateView):
-    def get(self, request):
+class AdminAuth(View):
+    def get(self, request,  *args, **kwargs):
 
-        return render(request, 'administrator/login.html')
+        context = {
+            "title": " Login",
+            "form": LoginForm(),
+            "next": next,
+        }
+
+        return render(request, 'administrator/login.html', context)
+
+    def post(self, request):
+        form = LoginForm()
+        if request.method == 'POST':
+            if form.is_valid():
+                form.save()
+                return redirect('dashboard')
+            else:
+                form = LoginForm()
+            
+            context = {'form': form}
+            return render(request, 'administrator/login/', context)
+        else:
+            return render(request, 'administrator/login/')
+
 
 
 class Dashboard(TemplateView):
@@ -107,7 +129,7 @@ class Dashboard(TemplateView):
 
 
 # nominations
-class CreateNominations(View):
+class CreateNominations(TemplateView):
     def get(self, request):
 
         categories = Category.objects.all()
