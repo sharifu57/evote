@@ -1,0 +1,97 @@
+{% extends "path/app.html" %}
+{% load static %}
+{% load voting_filters %}
+{% block content %}
+    <div class="grad">
+        <div class="uk-container">
+            <div class="uk-margin-large-left uk-margin-large-right">
+                {% include 'path/nav.html' %}
+                <div class="uk-margin-left uk-margin-right">
+                    <div>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="uk-alert-success" uk-alert>
+                                    <a class="uk-alert-close" uk-close></a>
+                                    <p>{{message}}</p>
+                                </div>      
+                            {% endfor %}
+                        {% else %}
+                            <!-- <p>no messages</p> -->
+                        {% endif %}
+                    </div>
+                    <div class="uk-section">
+                        <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+                            {% for category in categories %}
+                            <div>
+                                <div>
+
+                                    {% if category|has_voted:request %}
+                                    <div class="uk-tile uk-tile-primary uk-padding-small" style="border-radius: 10px; background-color: #1076be;">
+                                    
+                                        <nav class="uk-navbar" uk-navbar>
+                                            <div class="uk-navbar-left">
+                                                <ul class="uk-navbar-nav">
+                                                    <li class="uk-active uk-margin-right">{{ category.id }}</li>
+                                                    <li class="truncate uk-active uk-text-uppercase uk-text-bold" style="color: white;">{{category.category_name}}</li>
+                                                </ul>           
+                                            </div>
+                                            <div class="uk-navbar-right">
+                                                <ul class="uk-navbar-nav">
+                                                    <li>
+                                                        {% if category|has_voted:request %}
+                                                        <button class="uk-button uk-button-small uk-button-default" disabled style="border-radius: 20px; color: white; background-color: #000000;">
+                                                            Voted
+                                                        </button>
+                                                        {% else %}
+                                                        <button class="uk-button uk-button-small uk-button-secondary" style="border-radius: 20px; color: white; background-color: #FCB108;">
+                                                            View
+                                                        </button>
+                                                        {% endif %}
+                                                    
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                    {% else %}
+                                        <a class="uk-active uk-link-reset" href="{% url 'nomination' category.id %}">
+                                            <div class="uk-tile uk-tile-primary uk-padding-small" style="border-radius: 10px; background-color: #1076be;">
+                                    
+                                                <nav class="uk-navbar" uk-navbar>
+                                                    <div class="uk-navbar-left">
+                                                        <ul class="uk-navbar-nav">
+                                                            <li class="uk-active uk-margin-right">{{ category.id }}</li>
+                                                            <li class="truncate uk-active uk-text-uppercase uk-text-bold" style="color: white;">{{category.category_name}}</li>
+                                                        </ul>           
+                                                    </div>
+                                                    <div class="uk-navbar-right">
+                                                        <ul class="uk-navbar-nav">
+                                                            <li>
+                                                                {% if category|has_voted:request %}
+                                                                <button class="uk-button uk-button-small uk-button-default" disabled style="border-radius: 20px; color: white; background-color: #000000;">
+                                                                    Voted
+                                                                </button>
+                                                                {% else %}
+                                                                <button class="uk-button uk-button-small uk-button-secondary" style="border-radius: 20px; color: white; background-color: #FCB108;">
+                                                                    View
+                                                                </button>
+                                                                {% endif %}
+                                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </nav>
+                                            </div>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {%	endfor	%}
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+{% endblock %}

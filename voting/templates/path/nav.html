@@ -1,0 +1,22 @@
+{% extends "path/app.html" %}
+{% load static %}
+{% block content %}
+
+    <nav class="uk-navbar" uk-navbar>
+        <div class="uk-navbar-left">
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"><a href="/">
+                    <img class="" src="{% static 'images/logo.png' %}" width="150">
+                </a></li>
+            </ul>
+
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"><a href="https://tmsa.or.tz/" target="blank">Website</a></li>
+            </ul>
+        </div>
+    </nav>
+
+{% endblock %}

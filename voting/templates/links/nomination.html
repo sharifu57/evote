@@ -1,0 +1,89 @@
+{% extends "path/app.html" %}
+{% load static %}
+{% block content %}
+{% load user_agents %}
+<div class="nomination">
+    <div class="uk-container">
+        <div class="uk-margin-large-left uk-margin-large-right">
+            <div>
+
+                {% include 'path/nav.html' %}
+
+                <div class="uk-section">
+                    <!-- {% if request|is_mobile %}
+                       {{nominations}}
+                    {% endif %} -->
+
+                    <div class="uk-margin-left uk-margin-right">
+                        <div class="uk-margin-bottom">
+                            <p class="uk-text-bold uk-text-uppercase uk-margin-small-top" style="color: #1076be;">
+                                {{category}} (2022)
+                            </p>
+                        </div>
+                    </div>
+                    {% if nominations %}
+                    <div class="uk-margin-left uk-margin-right">
+                    
+                        <div>
+
+                            {% for nomination in nominations %}
+                            <div class="uk-margin-small-bottom">
+                                <div class="uk-tile uk-tile-primary uk-padding-small" style="border-radius: 10px; background-color: #1076be;">
+
+                                    <nav class="uk-navbar" uk-navbar>
+                                        <div class="uk-navbar-left">
+                                            <ul class="uk-navbar-nav">
+                                                <li class="uk-active uk-margin-right">{{ nomination.id }}</li>
+                                                <a class="uk-link-reset" >
+                                                    <li class="truncate uk-active uk-text-uppercase uk-text-bold" style="color: white;">
+                                                        {{nomination.name}}</li>
+                                                </a>
+                                            </ul>
+                                        </div>
+                                        <div class="uk-navbar-right">
+                                            <ul class="uk-navbar-nav">
+                                                <li>
+                                                    <form method="Post" action="/vote/">
+                                                        {% csrf_token %}
+                                                        <div class="uk-form-controls">
+                                                            <input class="uk-input" id="form-stacked-text" name="category" type="hidden" value="{{category.id}}" placeholder="" required>
+                                                        </div>
+                                                        <div class="uk-form-controls">
+                                                            <input class="uk-input" id="form-stacked-text" name="nomination" type="hidden" value="{{nomination.id}}" placeholder="" required>
+                                                        </div>
+                                                        <button class="uk-button uk-button-small uk-button-secondary"
+                                                        style="border-radius: 20px; color: white; background-color: #FCB108;">
+                                                            vote
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% else %}
+                    <div>
+                        <div class="uk-position-center">
+                            <div class="uk-margin-large-bottom">
+                                <span class="uk-text-center" uk-icon="icon: info; ratio: 2.0"></span>
+                              
+                            </div>
+                        </div>
+                        <div class="uk-position-center">
+                            <div class="uk-margin-large-top">
+                                
+                                <p class="uk-text-center uk-margin-large-top">No Nominations for this category</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

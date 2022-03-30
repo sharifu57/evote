@@ -1,0 +1,150 @@
+{% extends "path/app.html" %}
+{% load static %}
+{% load voting_filters %}
+{% block content %}
+    <div style="background-color: rgb(246, 247, 248);">
+        <div class="uk-visible@s uk-visible@m">
+            <div class="uk-section">
+                <div class="uk-container">
+                    <div class="uk-flex" uk-grid>
+                        <div class="uk-width-1-4">
+    
+                        </div>
+                        <div class="uk-width-expand">
+                            <div class="uk-card uk-card-default uk-card-body">
+                                <a href="">
+                                    <img class="uk-align-center" src="{% static 'images/logo.png' %}" width="200">
+                                </a>
+                                <h5 class="uk-text-center uk-text-bold">Suggest Your Nomination</h5>
+                                <!-- <hr> -->
+                                <div >
+                                    <div>
+                                        <form method="POST" action="">
+                                            {% csrf_token %}
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label uk-text-bold" for="form-stacked-text " style="color: #3A3460;">Name of Company: </label>
+                                                <div class="uk-form-controls">
+                                                    <input class="uk-input" id="form-stacked-text" value="{{name}}" name="name" type="text" placeholder="eg: xyz company ltd" style="border-radius: 20px; border-color: #3A3460;">
+                                                </div>
+                                            </div>
+    
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label uk-text-bold" for="form-stacked-select" style="color: #3A3460;">Choose Category: </label>
+                                                <div class="uk-form-controls">
+                                                    <select class="uk-select" name="category" id="form-stacked-select" style="border-radius: 20px; border-color: #3A3460;">
+                                                            <option value="">~choose one~</option>
+                                                            {% for category in categories %}
+                                                                <option value="{{category.id}}">{{category.category_name}}</option>
+                                                            {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label uk-text-bold" for="form-stacked-select" style="color: #3A3460;">Link to website/social media: </label>
+                                                <div class="uk-form-controls">
+                                                    <input class="uk-input" id="form-stacked-text" value="{{link}}" name="link" type="text" placeholder="https:www........." style="border-radius: 20px; border-color: #3A3460;">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="uk-margin-top">
+    
+                                            </div>
+
+                                            <div class="uk-margin">
+                                                <button type="submit" class="uk-button uk-button-primary  uk-width-1-1 uk-text-bold" style="background-color: #3A3460;">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        
+                                        </form>
+
+                                        {% if form.errors %}
+                                            <div class="uk-alert-danger" uk-alert>
+                                                <a class="uk-alert-close" uk-close></a>
+                                                <p> {{ form.errors }}</p>
+                                            </div>
+                                        {% else %}
+
+                                        {% endif %}
+                                       
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="uk-width-1-4">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-hidden@s  uk-hidden@m">
+            
+            <div class="uk-section">
+                <div class="uk-container">
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <img class="uk-align-center" src="{% static 'images/logo.png' %}" width="200">
+                            <h5 class="uk-text-center uk-text-bold">Suggest Your Nomination</h5>
+                            <!-- <hr> -->
+                            <div >
+                                <div>
+                                    <form method="POST" action="" class="uk-form-stacked">
+                                        {% csrf_token %}
+                                        <div class="uk-margin">
+                                            <label class="uk-form-label uk-text-bold" for="form-stacked-text " style="color: #3A3460;">Name of Company: </label>
+                                            <div class="uk-form-controls">
+                                                <input class="uk-input" id="form-stacked-text" name="name" type="text" placeholder="eg: xyz company ltd" style="border-radius: 20px; border-color: #3A3460;" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-margin">
+                                            <label class="uk-form-label uk-text-bold" for="form-stacked-select" style="color: #3A3460;">Choose Category: </label>
+                                            <div class="uk-form-controls">
+                                                <select class="uk-select" id="form-stacked-select" style="border-radius: 20px; border-color: #3A3460;" required>
+                                                        <option value="">~choose one~</option>
+                                                    {% for category in categories %}
+                                                        <option value="category">{{category.category_name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="uk-margin">
+                                            <label class="uk-form-label uk-text-bold" for="form-stacked-select" style="color: #3A3460;">Link to website/social media: </label>
+                                            <div class="uk-form-controls">
+                                                <input class="uk-input" id="form-stacked-text" name="link" type="text" placeholder="https:www........." style="border-radius: 20px; border-color: #3A3460;">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="uk-margin-top">
+
+                                        </div>
+
+                                        <div class="uk-margin">
+                                            <button type="submit" class="uk-button uk-button-primary  uk-width-1-1 uk-text-bold" style="background-color: #3A3460;">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    
+                                    </form>
+
+                                    {% if form.errors %}
+                                        <div class="uk-alert-danger" uk-alert>
+                                            <a class="uk-alert-close" uk-close></a>
+                                            <p> {{ form.errors }}</p>
+                                        </div>
+                                    {% else %}
+
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

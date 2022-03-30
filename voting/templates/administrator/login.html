@@ -1,0 +1,49 @@
+{% extends "path/app.html" %}
+{% load static %}
+{% load voting_filters %}
+{% block content %}
+<div class="grad2">
+    <div class="uk-container">
+        <div class="uk-margin-large-left uk-margin-large-right">
+            <div class="uk-margin-left uk-margin-right">
+                <div class="uk-container">
+                    <div class="uk-container">
+                        <div class="uk-flex" uk-grid>
+                            <div class="uk-width-1-4">
+
+                            </div>
+                            <div class="uk-width-expand">
+                                <div class="uk-margin-large-top">
+                                    <img class="uk-align-center" src="{% static 'images/logo.png' %}">
+                                    <div class="uk-card uk-card-default uk-card-body">
+                                        <form>
+
+                                            <div class="uk-margin">
+                                                <div class="uk-inline">
+                                                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                                    <input class="uk-input" type="text">
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="uk-margin">
+                                                <div class="uk-inline">
+                                                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                                    <input class="uk-input" type="text">
+                                                </div>
+                                            </div>
+                                        
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-4">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "path/app.html" %}
+{% load static %}
+{% load voting_filters %}
+{% block content %}
+<div class="grad3">
+    {% include 'path/adminnav.html' %}
+    <div>
+        <div class="uk-margin-large-left uk-margin-large-right">
+            <div class="uk-margin-left uk-margin-right">
+                <div class="uk-section">
+                    <div class="uk-container">
+                        <div class="uk-child-width-1-4@m uk-grid-small uk-grid-match" uk-grid>
+                            <div>
+                                <div class="uk-card uk-card-default uk-card-body">
+                                    <h4>Categories</h4>
+                                    <p>{{categories}}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-primary uk-card-body">
+                                    <h4>Nominations</h4>
+                                    <p>{{nominations}}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-secondary uk-card-body">
+                                    <h4>Votes</h4>
+                                    <p>{{votes}}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="uk-card uk-card-secondary uk-card-body">
+                                    <h4>Candidates</h4>
+                                    <!-- <p>{{users}}</p> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-margin-large-top">
+                            <table class="uk-table uk-table-divider">
+                                <thead style="background-color: #1076be;">
+                                    <tr>
+                                        <th class="uk-table-shrink">ID</th>
+                                        <th class="uk-table-expand">Expand</th>
+                                        <th class="uk-width-small">Width Small</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for vote in voting %}
+                                        <tr>
+                                            <td>{{vote.id}}</td>
+                                            <td>{{vote.category.category_name}}</td>
+                                            <td>Table Data</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

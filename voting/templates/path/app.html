@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static  %}
+
+<html>
+    <head>
+        <title>eVote</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/static/css/uikit.min.css">
+        <script src="/static/js/uikit.min.js" ></script>
+        <script src="/static/js/uikit-icons.min.js"></script>
+
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.12.2/dist/css/uikit.min.css" />
+
+        <!-- UIkit JS -->
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.12.2/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.12.2/dist/js/uikit-icons.min.js"></script>
+
+        <style>
+            .grad{
+                background-color: #ffffff;
+            }
+            .grad2{
+                background-color: #e6e6e6;
+            }
+                
+                /* background-color: #181145; */
+                /* background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); */
+            
+            .nomination{
+                background-color: #e6e6e6;
+            }
+            .truncate {
+                width: 250px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }   
+            
+            .card:hover {
+                box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+                transform: translate3d(0px, -1px, 0px);
+                transition: all .3s ease-in-out;
+            }       
+        </style>
+    </head>
+    <body>
+        {% load static %}
+        {% block content %}
+          
+        {% endblock %}
+    </body>
+</html>
